@@ -1,3 +1,9 @@
+# CSC 468 - DBMS Implementation Project
+
+Authors: Finlay and Nix
+
+We are extending the open source DBMS SmallSQL to implement materialized views (MVs) and MV recommendations. This project is for our quarter long project grade and all credit for the original DBMS we are extending goes to the authors of SmallSQL.
+
 # SmallSQL Database
 
 SmallSQL Database is a free DBMS library for the Java(tm) platform.
