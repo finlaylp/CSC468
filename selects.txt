@@ -1,0 +1,9 @@
+--file start
+SELECT * FROM TableOne, TableTwo WHERE TableOne.C = 1
+SELECT * FROM TableOne, TableThree
+SELECT * FROM TableTwo, TableThree
+SELECT * FROM TableOne, TableTwo WHERE TableOne.A = 0
+SELECT * FROM TableOne, TableThree
+SELECT * FROM TableTwo, TableThree WHERE TableThree.G = 1
+SELECT * FROM TableOne, TableTwo, TableThree WHERE TableTwo.F = 1
+SELECT * FROM TableOne, TableTwo, TableThree WHERE TableTwo.F = 0
