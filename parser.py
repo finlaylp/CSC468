@@ -12,7 +12,7 @@ conn = jaydebeapi.connect("smallsql.database.SSDriver",
 
 curs = conn.cursor()
 curs.execute('USE MyDb')
-curs.execute('DROP VIEW FirstView')
+# curs.execute('DROP VIEW FirstView')
 
 # Init Part 
 # with open('init_TableThree.txt') as f:
@@ -37,22 +37,29 @@ with open('selects.txt') as f:
 
 
 sorted_dict = ({k: v for k, v in sorted(count_dict.items(), key=lambda item: item[1])})
-firstView = (sorted_dict.popitem())
-table_split = ', '.join(firstView[0].split('|'))
-n = firstView[1]
+queries = []
+for item in sorted_dict.items():
+    views = ', '.join(item[0].split('|'))
+    if(views == ''):
+        continue
+    query = '''CREATE VIEW {view_name} AS SELECT * FROM {table_split}'''.format(view_name = "MaterializedView", table_split = views)
+    queries.append(query)
 
-gen_query = '''CREATE VIEW {view_name} AS SELECT * FROM {table_split}'''.format(view_name = "FirstView", table_split = table_split)
 
-
-print("The has seen tables {table_split} {n} times each and generated the following".format(table_split = table_split, n = n))
-print("The program recommends the following view: ")
+# print("The has seen tables {table_split} { times each and generated the following".format(table_split = table_split, n = n))
+print("The program recommends the following views: ")
 print("-------------------------------------------")
-print(gen_query)
-curs = conn.cursor()
-curs.execute(gen_query)
+for query in queries:
+    print(query)
 
-curs.execute('SELECT * FROM FirstView')
-print(curs.fetchall())
+# Store the view if required
+# curs = conn.cursor()
+# curs.execute(gen_query)
+
+# Fetch data from view
+
+# curs.execute('SELECT * FROM FirstView')
+# print(curs.fetchall())
 
 
 curs.close()
