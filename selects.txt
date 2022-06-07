@@ -7,3 +7,7 @@ SELECT * FROM TableOne, TableThree
 SELECT * FROM TableTwo, TableThree WHERE TableThree.G = 1
 SELECT * FROM TableOne, TableTwo, TableThree WHERE TableTwo.F = 1
 SELECT * FROM TableOne, TableTwo, TableThree WHERE TableTwo.F = 0
+SELECT SUM(A) FROM TableOne, TableTwo;
+SELECT SUM(A) FROM TableOne, TableTwo;
+SELECT SUM(A) FROM TableOne, TableTwo;
+SELECT SUM(A) FROM TableOne, TableTwo;
